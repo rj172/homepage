@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <title>Page Title</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  ``<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  `<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <style> 
+            :root {
+                --primary-color:white;
+                --secondary-color: black;
+                
+                
+            }
+            [data-theme="dark"] {
+                --primary-color:black;
+                --secondary-color:white;
+                
+            }
+        img{
+                height: 663px;
+                width: 100%;
+            
+        }
+        #a1{
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border: 0px 0px 0px 0px;    
+        }
+        #a1 span{
+           color: var(--primary-color);
+        }
+      
+        .icons{
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        .global-header {
+            min-height:600px;
+            background-image: url("./image1.jpg");
+            background-size: cover;
+            text-align: center;
+        }
+        .nav{
+            height:40px;
+           
+            left:0;
+            right:0;
+            
+            position:absolute;
+            }
+            
+            #fixNav{
+            position:fixed;
+            top:0px;
+            }
+            header{
+                color: red;
+            }
+           
+            .nav ul {
+                list-style: none;
+                text-align: center;
+             }
+             
+             .nav ul li {
+                display: inline-block;
+                color:white;
+                padding: 10px;
+             }
+             .nav ul li a{
+               
+                color:white;
+
+             }
+
+        #themebtn{
+            position: fixed;
+            background-color: var(--primary-color);
+            color:var(--secondary-color);
+            transform: rotate(270deg);
+            left: 0px;
+            top: 300px;
+        }
+        h2{
+            color: white
+        }
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            background-color:black;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            text-size-adjust: 5px;  
+            }
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+              }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            
+        }
+        .dropdown-content :hover{
+            text-decoration: underline;
+            
+        }
+        #caption{
+            position: fixed;
+            bottom: 5px;
+            left: 45%;
+            color: white;
+        }
+        #a12{
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            color: white;
+
+        }
+
+          
+          
+    </style>
+    
+    
+</head>
+
+<body class="container global-header" id="">
+    <div class="container">
+        <h2 class="text-center ">Borano</h2> 
+        <div class="nav">
+                <ul>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">HOME</a>
+                                <div class="dropdown-content">
+                                  <a href="#">Thumbnails</a>
+                                  <a href="#">SlideShow</a>
+                                  <a href="#">SLIDER</a>
+                                </div>
+                        </li>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">PORTFOLIO</a>
+                                <div class="dropdown-content">
+                                  <a href="#">2-COLUMNS</a>
+                                  <a href="#">3-COLUMNS</a>
+                                  <a href="#">4-COLUMNS</a>
+                                </div>
+                        </li>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">GALLERY</a>
+                                <div class="dropdown-content">
+                                  <a href="#">JUSTIFIED</a>
+                                  <a href="#">ALBUM</a>
+                                  <a href="#">GRID</a>
+                                </div>
+                        </li>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">ABOUT</a>
+                                <div class="dropdown-content">
+                                  <a href="#">ABOUT US</a>
+                                  <a href="#">ABOUT ME</a>
+                                  <a href="#">ABOUT MINIMAL</a>
+                                </div>
+                        </li>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">BLOG</a>
+                                <div class="dropdown-content">
+                                  <a href="#">BLOG-FULLWIDTH</a>
+                                  <a href="#">BLOG BOXED</a>
+                                  <a href="#">BLOG POST</a>
+                                </div>
+                        </li>
+                        <li class="dropdown">
+                                <a href="#" class="dropbtn">CONTACT</a>
+                                <div class="dropdown-content">
+                                  <a href="#">CONTACT US</a>
+                                  <a href="#">CONTACT ME</a>
+                                  <a href="#">CONTACT MINIMAL</a>
+                                </div>
+                        </li>
+                    <li ><a href="#">BUY NOW</a></li>
+                </ul>
+        </div>
+
+
+
+   
+
+    <script>
+            var index=1;
+            var pause1=false;
+            var x=new Array('./image1.jpg','./image4.jpg','./image6.jpg');
+            var quote=new Array("what keeps the planet spinning","All ends with begginings","like the legend of the phoenix");
+            const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+            var light=true;
+            function switchTheme() {
+                if (light==true) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.getElementById("themebtn").innerHTML = "Dark Theme"
+                    light=false;
+                }
+                else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    light=true;
+                    document.getElementById("themebtn").innerHTML = "Light Theme"
+                }    
+            }
+
+
+
+            var timer = null;
+            function move(n)
+            {   
+                clearTimeout(timer);
+                if(pause1==false)
+                    shownext(index+=n);
+                else
+                    change(index+=n);
+            }
+            function change(n)
+            {
+                var i;
+                
+                if(n > x.length) index=1;
+                if(n < 1) index=x.length;
+                $('.global-header')
+                .css('background-image','url("'+x[index-1]+'")');
+                document.getElementById("caption").innerHTML = quote[index-1];
+                    
+            
+            }
+            function pause(){
+                if(pause1==false)
+                   { clearTimeout(timer);
+                     pause1 = true;
+                     document.getElementById("ispause").className="glyphicon glyphicon-play";
+                     
+                    }
+                else{ 
+                    pause1=false;
+                
+                    document.getElementById("ispause").className="glyphicon glyphicon-pause";
+                    shownext();
+
+                }
+                
+            }
+            function shownext(n){
+                var i;
+               
+                
+                if(n==undefined) {
+                    index = (index + 1);
+                    n = index;
+                }
+                if(n > x.length) index=1;
+               if(n < 1) index=x.length;
+               
+                $('.global-header')
+                .css('background-image','url("'+x[index-1]+'")')
+                .fadeIn(1500,function(){
+                    timer = setTimeout(shownext ,2000);
+                });
+                document.getElementById("caption").innerHTML = quote[index-1];
+                
+            }
+            if(pause1==false)
+            shownext();
+            
+
+
+    </script>
+    
+    
+    <div class="icons">
+        <a id="a1" href="#" class="btn btn-default btn-lg" onclick="move(-1);" >
+        <span id="span1"  class="glyphicon glyphicon-chevron-left" ></span> </a>
+        <a href="#" id="a1" class="btn btn-default btn-lg" onclick="pause();">
+        <span  class="glyphicon glyphicon-pause" id="ispause"></span> </a>
+        <a href="#"  id="a1" class="btn btn-default btn-lg" onclick="move(1);">
+        <span id="span1" class="glyphicon glyphicon-chevron-right" ></span> </a>
+        <a href="#" id="a1" class="btn btn-default btn-lg">
+        <span id="span1" class="glyphicon glyphicon-resize-full"></span> </a>
+    </div>
+    <p id="caption">All ends with begginings</p>
+    
+    <p id="a12"> (b) 2016. By AchtungThemes & FastWP|<a style="color:white" href="#">Facebook</a>|<a href="#" style="color:white" >Instagram</a>|<a href="#" style="color:white">500px</a> </p>
+    
+    <button type="button" id="themebtn" class="btn btn-primary btn-sm" onclick="switchTheme();">Light THEME</button>
+
+    
+</div>
+
+</body>
+</html>
